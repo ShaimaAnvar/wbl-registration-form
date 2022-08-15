@@ -1,0 +1,57 @@
+label{
+    color:yellow;
+    padding-right:20px
+}
+ h3{
+    color:yellow;
+ }
+ #div1{
+    background-color:orange;
+    border-top-left-radius:25px;
+    border-top-right-radius:25px;
+    height:40px;
+    padding-left: 10px;
+    padding-top: 1px
+ }
+ #div2{
+    text-align: right;
+    background-color:black;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right:15px
+ }
+ #div3{
+    background-color:orange;
+    border-bottom-left-radius:25px;
+    border-bottom-right-radius:25px;
+    height:50px;
+    padding-top:5px;
+    Padding-left:70%  
+ }
+#main{
+    width:50%;
+}
+ #submit{
+    background-color:green;
+    color:white ;
+    width: 70px;
+    height:40px;
+    border: 2px solid green;
+    border-radius: 5px; 
+ }  
+ #cancel{
+    background-color:red;
+    color:white;
+    width: 70px;
+    height:40px;
+    border: 2px solid red;
+    border-radius: 5px;
+ }
+
+ #dropdown{
+    width:63%;
+ }
+
+ #dob{
+    width:62%;
+ }
