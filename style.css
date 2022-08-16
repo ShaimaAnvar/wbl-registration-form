@@ -31,7 +31,7 @@ label{
 #main{
     width:50%;
 }
- #submit{
+ #submitButton{
     background-color:green;
     color:white ;
     width: 70px;
@@ -39,7 +39,7 @@ label{
     border: 2px solid green;
     border-radius: 5px; 
  }  
- #cancel{
+ #cancelButton{
     background-color:red;
     color:white;
     width: 70px;
