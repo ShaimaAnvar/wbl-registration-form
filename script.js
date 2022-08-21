@@ -40,9 +40,6 @@ $(document).ready(function(){
                 required:true,
                 minlength:6
             },
-            
-
-            
         }
         
     })
