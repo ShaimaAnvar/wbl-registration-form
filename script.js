@@ -153,5 +153,9 @@
             console.log(Result);
         }    
     }
+    // Adding cancel button functionality
+    function clearForm(){
+        document.getElementById("registration-form").reset();
+    }
 //
  
