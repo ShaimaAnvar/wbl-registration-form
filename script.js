@@ -48,6 +48,7 @@
 //         }
 //     })
 // })
+
     function submitFunction(){
         /* form validation by using javascript */
         var name = document.getElementById('name');
@@ -60,7 +61,6 @@
         function validate(){
             var isValid = true;
             //validating name
-            //var name = document.getElementById('name');
             if (name.value.trim() ==""){
                 name.style.border = "solid 3px red";
                 document.getElementById('lblname').style.visibility="visible";
@@ -70,7 +70,6 @@
                 document.getElementById('lblname').style.visibility="hidden";
             }
             //validating dob
-            //var dob = document.getElementById('dob');
             if (dob.value.trim() ==""){
                 dob.style.border = "solid 3px red";
                 document.getElementById('lbldob').style.visibility="visible";
@@ -94,7 +93,6 @@
                 isValid = false;
             }
             //validating country
-            //var country = document.getElementById('cntry');
             if (country.value.trim() ==""){
                 cntry.style.border = "solid 3px red";
                 document.getElementById('lblcntry').style.visibility="visible";
@@ -104,7 +102,6 @@
                 document.getElementById('lblcntry').style.visibility="hidden";
             }
             //validating email
-            //var email = document.getElementById('email');
             if (email.value.trim() ==""){
                 email.style.border = "solid 3px red";
                 document.getElementById('lblemail').style.visibility="visible";
@@ -114,7 +111,6 @@
                 document.getElementById('lblemail').style.visibility="hidden";
             }
             //validating phone number
-            //var phoneNum = document.getElementById('phone');
             if (phoneNum.value.trim() ==""){
                 phone.style.border = "solid 3px red";
                 document.getElementById('lblphone').style.visibility="visible";
@@ -124,17 +120,15 @@
                 document.getElementById('lblphone').style.visibility="hidden";
             }
             //validating password
-            //var password = document.getElementById('pswrd');
             if (password.value.trim() ==""){
                 pswrd.style.border = "solid 3px red";
                 document.getElementById('lblpswrd').style.visibility="visible";
                 isValid = false;
-            } else {
+            }else {
                 pswrd.style.border = "none";
                 document.getElementById('lblpswrd').style.visibility="hidden";
             }
             //validating confirm password
-            //var confirmPassword = document.getElementById('confirmPswrd');
             if (confirmPassword.value.trim() ==""){
                 confirmPswrd.style.border = "solid 3px red";
                 document.getElementById('lblconfirmpswrd').style.visibility="visible";
@@ -145,17 +139,73 @@
             }
             return isValid;
         }
+        // Printing data in console..
         if(validate() == true){
             alert('Please verify the data you enterd');
             var genderSelected=document.querySelector('input[name="gender"]:checked').value;
-            Result = "Name: "+ name.value +"\n"+ "Date of birth: "+ dob.value+"\n"+"Gender: "+ genderSelected+"\n"+"Country: "+country.value+"\n"+ 
+            var result = "Name: "+ name.value +"\n"+ "Date of birth: "+ dob.value+"\n"+"Gender: "+ genderSelected+"\n"+"Country: "+country.value+"\n"+ 
             "Email: "+email.value+ "\n"+"Phone Nember: "+phoneNum.value+"\n"+ "Password: "+password.value+"\n"+"Confirm Password: "+confirmPassword.value;
-            console.log(Result);
+            console.log(result);
+            clearForm();
         }    
+    }
+    function checkName(){
+        var name = document.getElementById('name');
+        if (name.value.trim() != ""){
+            name.style.border = "none";
+            document.getElementById('lblname').style.visibility="hidden";
+        } 
+    }
+    function checkdateOfBirth(){
+        var dob = document.getElementById('dob');
+        if (dob.value.trim() != ""){
+            dob.style.border = "none";
+            document.getElementById('lbldob').style.visibility="hidden";
+        } 
+    }
+    function checkGender(){
+        if(document.getElementById('male').checked || document.getElementById('female').checked ){
+            document.getElementById('lblgender').style.visibility="hidden";
+        }
+    }
+    function checkCountry(){
+        var country = document.getElementById('cntry');
+        if (country.value.trim() != ""){
+            cntry.style.border = "none";
+            document.getElementById('lblcntry').style.visibility="hidden";
+        } 
+    }
+    function checkEmail(){
+        var email = document.getElementById('email');
+        if (email.value.trim() != ""){
+            email.style.border = "none";
+            document.getElementById('lblemail').style.visibility="hidden";
+        } 
+    }
+    function checkPhoneNumber(){
+        var phoneNum = document.getElementById('phone');
+        if (phoneNum.value.trim() != ""){
+            phone.style.border = "none";
+            document.getElementById('lblphone').style.visibility="hidden";
+        } 
+    }
+    function checkPassword(){
+        var password = document.getElementById('pswrd');
+        if (password.value.trim() != ""){
+            pswrd.style.border = "none";
+            document.getElementById('lblpswrd').style.visibility="hidden";
+        } 
+    }
+    function checkConfirmPassword(){
+        var confirmPassword = document.getElementById('confirmPswrd');
+        if (confirmPassword.value.trim() != ""){
+            confirmPswrd.style.border = "none";
+            document.getElementById('lblconfirmpswrd').style.visibility="hidden";
+        } 
     }
     // Adding cancel button functionality
     function clearForm(){
         document.getElementById("registration-form").reset();
     }
-//
+
  
