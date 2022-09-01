@@ -60,15 +60,11 @@
         var confirmPassword = document.getElementById('confirmPswrd');
         function validate(){
             var isValid = true;
-            //validating name
-            if (name.value.trim() ==""){
-                name.style.border = "solid 3px red";
-                document.getElementById('lblname').style.visibility="visible";
-                isValid = false;
-            } else {
-                name.style.border = "none";
-                document.getElementById('lblname').style.visibility="hidden";
-            }
+
+            //validating Name
+            var nameValRes = checkName();
+            isValid = nameValRes;
+
             //validating dob
             if (dob.value.trim() ==""){
                 dob.style.border = "solid 3px red";
@@ -78,6 +74,7 @@
                 dob.style.border = "none";
                 document.getElementById('lbldob').style.visibility="hidden";
             }
+
             // validating gender type
             var radios = document.getElementsByName('gender');
             var isGenderSelected = false;
@@ -150,23 +147,29 @@
         }    
     }
     function checkName(){
+        var isNameValid= true;
         var name = document.getElementById('name');
         if (name.value.trim() ==""){
             name.style.border = "solid 3px red";
+            document.getElementById('lblname').style.visibility="visible";
             document.getElementById('lblname').innerHTML = "Please fill out this field";
+            isNameValid = false;
         }else if(name.value.trim().length <= 1){
             name.style.border = "solid 3px red";
             document.getElementById('lblname').style.visibility="visible";
             document.getElementById('lblname').innerHTML = "Username should contain atleast 2 characters";
+            isNameValid = false;
         }else if(name.value.trim().length > 1 && name.value.trim().length <= 10){
             name.style.border = "none";
             document.getElementById('lblname').style.visibility="hidden";
+            isNameValid = true;
         }else{
             name.style.border = "solid 3px red";
             document.getElementById('lblname').style.visibility="visible";
             document.getElementById('lblname').innerHTML = "Username should not contain more than 10 characters"; 
+            isNameValid = false;
         }
-        
+        return isNameValid;
     }
     function checkdateOfBirth(){
         var dob = document.getElementById('dob');
