@@ -68,7 +68,7 @@
             //validating dob
             var dobValRes = checkdateOfBirth();
             isValid = dobValRes;
-            
+
             // validating gender type
             var radios = document.getElementsByName('gender');
             var isGenderSelected = false;
@@ -84,15 +84,10 @@
                 isValid = false;
             }
 
-            //validating country
-            if (country.value.trim() ==""){
-                cntry.style.border = "solid 3px red";
-                document.getElementById('lblcntry').style.visibility="visible";
-                isValid = false;
-            } else {
-                cntry.style.border = "none";
-                document.getElementById('lblcntry').style.visibility="hidden";
-            }
+            // validating country 
+            var countryValRes = checkCountry();
+            isValid = countryValRes;
+
             //validating email
             if (email.value.trim() ==""){
                 email.style.border = "solid 3px red";
@@ -141,6 +136,7 @@
             clearForm();
         }    
     }
+
     //oninput functions for each fields....
     function checkName(){
         var isNameValid= true;
@@ -189,11 +185,17 @@
     }
 
     function checkCountry(){
+        var isCountryValid = true;
         var country = document.getElementById('cntry');
-        if (country.value.trim() != ""){
+        if (country.value.trim() == ""){
+            cntry.style.border = "solid 3px red";
+            document.getElementById('lblcntry').style.visibility="visible";
+            isCountryValid = false;
+        }else{
             cntry.style.border = "none";
             document.getElementById('lblcntry').style.visibility="hidden";
-        } 
+        }
+        return isCountryValid;
     }
 
     function checkEmail(){
