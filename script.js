@@ -97,15 +97,11 @@
                 email.style.border = "none";
                 document.getElementById('lblemail').style.visibility="hidden";
             }
+
             //validating phone number
-            if (phoneNum.value.trim() ==""){
-                phone.style.border = "solid 3px red";
-                document.getElementById('lblphone').style.visibility="visible";
-                isValid = false;
-            } else {
-                phone.style.border = "none";
-                document.getElementById('lblphone').style.visibility="hidden";
-            }
+            var phoneValRes = checkPhoneNumber();
+            isValid = phoneValRes;
+
             //validating password
             if (password.value.trim() ==""){
                 pswrd.style.border = "solid 3px red";
@@ -207,20 +203,26 @@
     }
 
     function checkPhoneNumber(){
+        var isphonevalid = true;
         var phoneNum = document.getElementById('phone');
         var regx = /^[+][1]\d{10}$/;
-        if(regx.test(phoneNum.value)){
+        if (phoneNum.value.trim() == ""){
+            phone.style.border = "solid 3px red";
+            document.getElementById('lblphone').style.visibility="visible";
+            document.getElementById('lblphone').innerHTML="Please fill out this field";
+            isphonevalid = false;
+            } 
+        else if(regx.test(phoneNum.value)){
             phone.style.border = "none";
             document.getElementById('lblphone').style.visibility="hidden";
+            isphonevalid = true;
         }else{
             phone.style.border = "solid 3px red";
             document.getElementById('lblphone').innerHTML="Invalid phone number";
             document.getElementById('lblphone').style.visibility="visible";
+            isphonevalid = false;
         }
-        // if (phoneNum.value.trim() != ""){
-        //     phone.style.border = "";
-        //     document.getElementById('lblphone').style.visibility="hidden";
-        // } 
+        return isphonevalid;  
     }
 
     function checkPassword(){
