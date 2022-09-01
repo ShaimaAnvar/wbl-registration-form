@@ -66,15 +66,9 @@
             isValid = nameValRes;
 
             //validating dob
-            if (dob.value.trim() ==""){
-                dob.style.border = "solid 3px red";
-                document.getElementById('lbldob').style.visibility="visible";
-                isValid = false;
-            } else {
-                dob.style.border = "none";
-                document.getElementById('lbldob').style.visibility="hidden";
-            }
-
+            var dobValRes = checkdateOfBirth();
+            isValid = dobValRes;
+            
             // validating gender type
             var radios = document.getElementsByName('gender');
             var isGenderSelected = false;
@@ -89,6 +83,7 @@
                 document.getElementById('lblgender').style.visibility="visible";
                 isValid = false;
             }
+
             //validating country
             if (country.value.trim() ==""){
                 cntry.style.border = "solid 3px red";
@@ -146,6 +141,7 @@
             clearForm();
         }    
     }
+    //oninput functions for each fields....
     function checkName(){
         var isNameValid= true;
         var name = document.getElementById('name');
@@ -171,18 +167,27 @@
         }
         return isNameValid;
     }
+
     function checkdateOfBirth(){
+        var isDOBValid =true;
         var dob = document.getElementById('dob');
-        if (dob.value.trim() != ""){
+        if (dob.value.trim() == ""){
+            dob.style.border = "solid 3px red";
+            document.getElementById('lbldob').style.visibility="visible";
+            isDOBValid = false;
+        }else{
             dob.style.border = "none";
             document.getElementById('lbldob').style.visibility="hidden";
-        } 
+        }
+        return isDOBValid;
     }
+
     function checkGender(){
         if(document.getElementById('male').checked || document.getElementById('female').checked ){
             document.getElementById('lblgender').style.visibility="hidden";
         }
     }
+
     function checkCountry(){
         var country = document.getElementById('cntry');
         if (country.value.trim() != ""){
@@ -190,6 +195,7 @@
             document.getElementById('lblcntry').style.visibility="hidden";
         } 
     }
+
     function checkEmail(){
         var email = document.getElementById('email');
         if (email.value.trim() != ""){
@@ -197,6 +203,7 @@
             document.getElementById('lblemail').style.visibility="hidden";
         } 
     }
+
     function checkPhoneNumber(){
         var phoneNum = document.getElementById('phone');
         var regx = /^[+][1]\d{10}$/;
@@ -213,6 +220,7 @@
         //     document.getElementById('lblphone').style.visibility="hidden";
         // } 
     }
+
     function checkPassword(){
         var password = document.getElementById('pswrd');
         if (password.value.length == ""){
@@ -232,6 +240,7 @@
             document.getElementById('lblpswrd').innerHTML = "Password too long";
         }
     }
+
     function checkConfirmPassword(){
         var confirmPassword = document.getElementById('confirmPswrd');
         var password = document.getElementById('pswrd');
