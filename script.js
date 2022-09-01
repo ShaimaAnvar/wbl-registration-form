@@ -1,54 +1,4 @@
 
-// $(document).ready(function(){
-//     $("#btn").click(function(event){
-//         event.preventDefault();
-//         // $("#registration-form").validate({
-//         //     rules:{
-//         //          fname:{
-//         //             required:true,
-//         //             minlength:4,
-//         //             maxlength:10
-//         //         },
-//         //         lname:{
-//         //             required:true,
-//         //             minlength:4,
-//         //             maxlength:10
-//         //         },
-//         //         dob:{
-//         //             required:true,
-//         //         },
-//         //         gender:{
-//         //             required:true,
-//         //         },
-//         //         countryName:{
-//         //             required:true,    
-//         //         },
-//         //         emailAddress:{
-//         //             required:true,
-//         //             email:true
-//         //         },
-//         //         phoneNumber:{
-//         //             required:true,
-//         //             number:true
-//         //         },
-//         //         password:{
-//         //             required:true, 
-//         //             minlength:6
-//         //         },
-//         //         confirmPassword:{
-//         //             required:true,
-//         //             minlength:6
-//         //         },
-//         //     } 
-//         // })
-        
-//         const firstName = $("#fname").val();
-//         if(firstName == ""  || firstName== null) {
-//             $("#error").text("First Name is mandatory.");
-//         }
-//     })
-// })
-
     function submitFunction(){
         /* form validation by using javascript */
         var name = document.getElementById('name');
@@ -60,7 +10,6 @@
         var confirmPassword = document.getElementById('confirmPswrd');
         function validate(){
             var isValid = true;
-
             //validating Name
             var nameValRes = checkName();
             isValid = nameValRes;
@@ -70,19 +19,8 @@
             isValid = dobValRes;
 
             // validating gender type
-            var radios = document.getElementsByName('gender');
-            var isGenderSelected = false;
-            for (var i = 0; i < radios.length; i++) {
-                if (radios[i].checked == true) {
-                    isGenderSelected = true;
-                    document.getElementById('lblgender').style.visibility="hidden";
-                    break;
-                }
-            }
-            if (isGenderSelected == false){
-                document.getElementById('lblgender').style.visibility="visible";
-                isValid = false;
-            }
+            var genderValRes = checkGender();
+            isValid = genderValRes;
 
             // validating country 
             var countryValRes = checkCountry();
@@ -103,25 +41,15 @@
             isValid = phoneValRes;
 
             //validating password
-            if (password.value.trim() ==""){
-                pswrd.style.border = "solid 3px red";
-                document.getElementById('lblpswrd').style.visibility="visible";
-                isValid = false;
-            }else {
-                pswrd.style.border = "none";
-                document.getElementById('lblpswrd').style.visibility="hidden";
-            }
+            var passwordValRes = checkPassword();
+            isValid = passwordValRes;
+
             //validating confirm password
-            if (confirmPassword.value.trim() ==""){
-                confirmPswrd.style.border = "solid 3px red";
-                document.getElementById('lblconfirmpswrd').style.visibility="visible";
-                isValid = false;
-            } else {
-                confirmPswrd.style.border = "none";
-                document.getElementById('lblconfirmpswrd').style.visibility="hidden";
-            }
+            var confirmPswrdValRes = checkConfirmPassword();
+            isValid = confirmPswrdValRes;
             return isValid;
         }
+
         // Printing data in console..
         if(validate() == true){
             alert('Please verify the data you enterd');
@@ -175,9 +103,14 @@
     }
 
     function checkGender(){
+        var isGenderValid = true;
         if(document.getElementById('male').checked || document.getElementById('female').checked ){
             document.getElementById('lblgender').style.visibility="hidden";
+        }else{
+            document.getElementById('lblgender').style.visibility="visible";
+            isGenderValid = false;
         }
+        return isGenderValid;
     }
 
     function checkCountry(){
@@ -226,36 +159,52 @@
     }
 
     function checkPassword(){
+        isPasswordValid = true;
         var password = document.getElementById('pswrd');
         if (password.value.length == ""){
             pswrd.style.border = "solid 3px red";
             document.getElementById('lblpswrd').style.visibility="visible";
             document.getElementById('lblpswrd').innerHTML = "Please fill out this field";
+            isPasswordValid = false;
         }else if (password.value.length <= 3){
             pswrd.style.border = "solid 3px red";
             document.getElementById('lblpswrd').style.visibility="visible";
             document.getElementById('lblpswrd').innerHTML = "Password too short";
+            isPasswordValid = false;
         }else if(password.value.length >=4 &&  password.value.length <= 8){
             pswrd.style.border = "none";
             document.getElementById('lblpswrd').style.visibility="hidden";
+            isPasswordValid = true;
         }else{
             pswrd.style.border = "solid 3px red";
             document.getElementById('lblpswrd').style.visibility="visible";
             document.getElementById('lblpswrd').innerHTML = "Password too long";
+            isPasswordValid = false;
         }
+        return isPasswordValid;
     }
 
     function checkConfirmPassword(){
+        var isConfirmPswrd = true;
         var confirmPassword = document.getElementById('confirmPswrd');
         var password = document.getElementById('pswrd');
-         if(password.value == confirmPassword.value){
+        if(confirmPassword.value == ""){
+            confirmPswrd.style.border = "solid 3px red";
+            document.getElementById('lblconfirmpswrd').style.visibility="visible";
+            document.getElementById('lblconfirmpswrd').innerHTML="Please fill out this field";
+            isConfirmPswrd = false;
+        }
+        else if(password.value == confirmPassword.value){
             confirmPswrd.style.border = "none";
             document.getElementById('lblconfirmpswrd').style.visibility="hidden";
+            isConfirmPswrd = true;
         }else{
             confirmPswrd.style.border = "solid 3px red";
             document.getElementById('lblconfirmpswrd').style.visibility="visible";
             document.getElementById('lblconfirmpswrd').innerHTML="Passwords does not match";
+            isConfirmPswrd = false;
         }
+        return isConfirmPswrd;
     }
     // Adding cancel button functionality
     function clearForm(){
