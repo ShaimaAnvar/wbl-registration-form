@@ -47,8 +47,7 @@
           <span class="sr-only">Next</span>
         </a>
     </div> -->
-<!-- form -->
-    
+<!-- form --> 
     <div class="container bg-dark text-warning col-sm-6 my-5">
         <!-- Title -->
         <div class="row bg-secondary my-5"><h3 class="col-12 text-center py-3">Registration form</h3>
@@ -60,7 +59,7 @@
                 <label class="col-sm-3 col-form-label">Name</label>
                 <div class="col-sm-9">
                     <input name="name" id="name" type="text" class="form-control"  placeholder="Enter first name..." oninput="checkName()">
-                    <label id="lblname" style="color:red; visibility:hidden">Invalid name</label>
+                    <label id="lblname" style="color:red; visibility:hidden">Please fill out this field</label>
                 </div>    
             </div>
             <!-- DOB field -->
@@ -117,7 +116,7 @@
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Phone</label>
                 <div class="col-sm-9">
-                    <input name="phoneNumber" id="phone" type="tel" class="form-control" oninput="checkPhoneNumber()">
+                    <input name="phoneNumber" id="phone" type="text" class="form-control" oninput="checkPhoneNumber()">
                     <label id="lblphone" style="color:red; visibility:hidden">
                         Please fill out this field
                     </label> 
@@ -137,7 +136,7 @@
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Confirm Password</label>
                 <div class="col-sm-9">
-                    <input name="confirmPassword" id="confirmPswrd" type="password" class="form-control" onkeyup="checkConfirmPassword()">
+                    <input name="confirmPassword" id="confirmPswrd" type="password" class="form-control" oninput="checkConfirmPassword()">
                     <label id="lblconfirmpswrd" style="color:red; visibility:hidden">
                         Please fill out this field
                     </label> 

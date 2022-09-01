@@ -151,7 +151,10 @@
     }
     function checkName(){
         var name = document.getElementById('name');
-        if(name.value.trim().length <= 1){
+        if (name.value.trim() ==""){
+            name.style.border = "solid 3px red";
+            document.getElementById('lblname').innerHTML = "Please fill out this field";
+        }else if(name.value.trim().length <= 1){
             name.style.border = "solid 3px red";
             document.getElementById('lblname').style.visibility="visible";
             document.getElementById('lblname').innerHTML = "Username should contain atleast 2 characters";
@@ -163,6 +166,7 @@
             document.getElementById('lblname').style.visibility="visible";
             document.getElementById('lblname').innerHTML = "Username should not contain more than 10 characters"; 
         }
+        
     }
     function checkdateOfBirth(){
         var dob = document.getElementById('dob');
@@ -192,14 +196,27 @@
     }
     function checkPhoneNumber(){
         var phoneNum = document.getElementById('phone');
-        if (phoneNum.value.trim() != ""){
+        var regx = /^[+][1]\d{10}$/;
+        if(regx.test(phoneNum.value)){
             phone.style.border = "none";
             document.getElementById('lblphone').style.visibility="hidden";
-        } 
+        }else{
+            phone.style.border = "solid 3px red";
+            document.getElementById('lblphone').innerHTML="Invalid phone number";
+            document.getElementById('lblphone').style.visibility="visible";
+        }
+        // if (phoneNum.value.trim() != ""){
+        //     phone.style.border = "";
+        //     document.getElementById('lblphone').style.visibility="hidden";
+        // } 
     }
     function checkPassword(){
         var password = document.getElementById('pswrd');
-        if (password.value.length <= 3){
+        if (password.value.length == ""){
+            pswrd.style.border = "solid 3px red";
+            document.getElementById('lblpswrd').style.visibility="visible";
+            document.getElementById('lblpswrd').innerHTML = "Please fill out this field";
+        }else if (password.value.length <= 3){
             pswrd.style.border = "solid 3px red";
             document.getElementById('lblpswrd').style.visibility="visible";
             document.getElementById('lblpswrd').innerHTML = "Password too short";
@@ -215,13 +232,13 @@
     function checkConfirmPassword(){
         var confirmPassword = document.getElementById('confirmPswrd');
         var password = document.getElementById('pswrd');
-        if(password.value != confirmPassword.value){
+         if(password.value == confirmPassword.value){
+            confirmPswrd.style.border = "none";
+            document.getElementById('lblconfirmpswrd').style.visibility="hidden";
+        }else{
             confirmPswrd.style.border = "solid 3px red";
             document.getElementById('lblconfirmpswrd').style.visibility="visible";
             document.getElementById('lblconfirmpswrd').innerHTML="Passwords does not match";
-        }else{
-            confirmPswrd.style.border = "none";
-            document.getElementById('lblconfirmpswrd').style.visibility="hidden";
         }
     }
     // Adding cancel button functionality
