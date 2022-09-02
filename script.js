@@ -40,8 +40,8 @@
         }
 
         // Printing data in console..
-        if(validate() == true){
-            alert('Please verify the data you enterd');
+        if(validate()){
+            alert('Please verify the data you entered');
             var genderSelected=document.querySelector('input[name="gender"]:checked').value;
             var result = "Name: "+ name.value +"\n"+ "Date of birth: "+ dob.value+"\n"+"Gender: "+ genderSelected+"\n"+"Country: "+country.value+"\n"+ 
             "Email: "+email.value+ "\n"+"Phone Nember: "+phoneNum.value+"\n"+ "Password: "+password.value+"\n"+"Confirm Password: "+confirmPassword.value;
@@ -117,15 +117,24 @@
     }
 
     function checkEmail(){
-        var isEmailValid = false;
+        var isEmailValid = true;
         var email = document.getElementById('email');
-        if (email.value.trim() != ""){
-            email.style.border = "none";
-            document.getElementById('lblemail').style.visibility="hidden";
-            isEmailValid = true;
-        }else{
+        var regx = /^([a-z A-Z 0-9 \.\-]+)\@([a-z A-Z 0-9 \-]+)\.([a-z]{2,8})$/;
+        if (email.value.trim() == ""){
             email.style.border = "solid 3px red";
             document.getElementById('lblemail').style.visibility="visible";
+            document.getElementById('lblemail').innerHTML="Please fill out this field";
+            isEmailValid = false;    
+        }else if(regx.test(email.value)){
+            email.style.border = "none";
+            document.getElementById('lblemail').style.visibility="hidden";
+            isEmailValid = true;  
+        }
+        else{
+            email.style.border = "solid 3px red";
+            document.getElementById('lblemail').style.visibility="visible";
+            document.getElementById('lblemail').innerHTML="Invalid email";
+            isEmailValid = false;
         }
         return isEmailValid;
     }
