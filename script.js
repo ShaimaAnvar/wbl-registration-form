@@ -27,14 +27,8 @@
             isValid = countryValRes;
 
             //validating email
-            if (email.value.trim() ==""){
-                email.style.border = "solid 3px red";
-                document.getElementById('lblemail').style.visibility="visible";
-                isValid = false;
-            } else {
-                email.style.border = "none";
-                document.getElementById('lblemail').style.visibility="hidden";
-            }
+            var emailValRes = checkEmail();
+            isValid = emailValRes;
 
             //validating phone number
             var phoneValRes = checkPhoneNumber();
@@ -47,6 +41,7 @@
             //validating confirm password
             var confirmPswrdValRes = checkConfirmPassword();
             isValid = confirmPswrdValRes;
+            //isValid = nameValRes && dobValRes && genderValRes && countryValRes && emailValRes && phoneValRes && passwordValRes && confirmPswrdValResis
             return isValid;
         }
 
@@ -128,11 +123,17 @@
     }
 
     function checkEmail(){
+        var isEmailValid = false;
         var email = document.getElementById('email');
         if (email.value.trim() != ""){
             email.style.border = "none";
             document.getElementById('lblemail').style.visibility="hidden";
-        } 
+            isEmailValid = true;
+        }else{
+            email.style.border = "solid 3px red";
+            document.getElementById('lblemail').style.visibility="visible";
+        }
+        return isEmailValid;
     }
 
     function checkPhoneNumber(){
