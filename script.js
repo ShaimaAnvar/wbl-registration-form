@@ -9,39 +9,33 @@
         var password = document.getElementById('pswrd');
         var confirmPassword = document.getElementById('confirmPswrd');
         function validate(){
-            var isValid = true;
             //validating Name
             var nameValRes = checkName();
-            isValid = nameValRes;
 
             //validating dob
             var dobValRes = checkdateOfBirth();
-            isValid = dobValRes;
 
             // validating gender type
             var genderValRes = checkGender();
-            isValid = genderValRes;
 
             // validating country 
             var countryValRes = checkCountry();
-            isValid = countryValRes;
 
             //validating email
             var emailValRes = checkEmail();
-            isValid = emailValRes;
 
             //validating phone number
             var phoneValRes = checkPhoneNumber();
-            isValid = phoneValRes;
 
             //validating password
             var passwordValRes = checkPassword();
-            isValid = passwordValRes;
 
             //validating confirm password
             var confirmPswrdValRes = checkConfirmPassword();
-            isValid = confirmPswrdValRes;
-            //isValid = nameValRes && dobValRes && genderValRes && countryValRes && emailValRes && phoneValRes && passwordValRes && confirmPswrdValResis
+
+            var isValid = nameValRes && dobValRes && genderValRes 
+                && countryValRes && emailValRes && phoneValRes 
+                && passwordValRes && confirmPswrdValRes;
             return isValid;
         }
 
